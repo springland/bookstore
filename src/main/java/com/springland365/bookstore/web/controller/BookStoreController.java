@@ -8,6 +8,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 
 import java.util.List;
 
@@ -24,7 +26,7 @@ public class BookStoreController {
        return "index";
     }
 
-    @GetMapping("/books")
+    @GetMapping("/listbooks")
     public String getBooks(Model model )
     {
 
@@ -33,9 +35,26 @@ public class BookStoreController {
         List<Book> books = this.bookRepo.findAll();
 
         model.addAttribute("books" , books);
-        return "books";
+        return "listbooks";
     }
 
+
+    @GetMapping("/addbook")
+    public String addBook(Model  model)
+    {
+        model.addAttribute("book" , new Book());
+        return "addbook";
+    }
+
+    @PostMapping("/createbook")
+    public String createBook(@ModelAttribute("book") Book book)
+    {
+
+        logger.info(book.toString());
+        this.bookRepo.save(book);
+        logger.info("Saved " + book);
+        return "listbooks";
+    }
 
 
 }

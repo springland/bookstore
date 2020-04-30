@@ -1,5 +1,6 @@
-<html lang="en">
 <%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
+<html lang="en">
+
 <head>
     <title>Bookstore Example</title>
     <meta charset="utf-8">
@@ -13,16 +14,10 @@
 </head>
 <body>
 
-<div class="bs-example">
-    <nav class="nav nav-tabs">
-        <a href="#" class="nav-item nav-link active">Home</a>
-        <a href="#" class="nav-item nav-link">Profile</a>
-        <a href="#" class="nav-item nav-link">Messages</a>
-        <a href="#" class="nav-item nav-link disabled" tabindex="-1">Reports</a>
-    </nav>
-</div>
+<c:import url="navbar.jsp"/>
 
 <div class="container">
+  <div>
     <table class="table table-hover">
         <thead>
             <tr>
@@ -41,6 +36,24 @@
             </c:forEach>
         </tbody>
     </table>
+   </div>
+
+
+   <div class="bs-example">
+       <nav>
+           <ul class="pagination">
+               <li class="page-item disabled"><a href="#" class="page-link" tabindex="-1">Previous</a></li>
+               <li class="page-item active"><a href="#" class="page-link">1</a></li>
+               <li class="page-item"><a href="#" class="page-link">2</a></li>
+               <li class="page-item"><a href="#" class="page-link">3</a></li>
+               <li class="page-item"><a href="#" class="page-link">4</a></li>
+               <li class="page-item"><a href="#" class="page-link">5</a></li>
+               <li class="page-item"><a href="#" class="page-link">Next</a></li>
+           </ul>
+       </nav>
+   </div>
+
+   </div>
 </div>
 
 </body>
